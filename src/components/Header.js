@@ -7,26 +7,22 @@ class Header extends React.Component{
             collapse:false
         }
     }
-    renderInventoryName=(inventoryDetails)=>{
+    renderInventoryName=(inventoryDetails, nav)=>{
       let result = unifyingArr(inventoryDetails, "InventoryName");
         return result.map((item,i) => {
              return (
-                     <li className="nav-item" key={i}>
+                <Fragment>
+                    {nav==="main"?
+                    <li className="nav-item" key={i}>
                         <a className="nav-link" href="#" onClick={()=>this.props.filterInverntory(item.InventoryName)}>{item.InventoryName}</a>
-                    </li>
+                    </li>:
+                     <a className="dropdown-item" href="#" onClick={()=>this.props.filterInverntory(item.InventoryName)}>{item.InventoryName}</a>
+                     }    
+                </Fragment>
                 );                     
             });
     }
-    renderManageType=(inventoryDetails)=>{
-        let result = unifyingArr(inventoryDetails, "InventoryName");
-          return result.map((item,i) => {
-               return (
-                       <Fragment>
-                           <a className="dropdown-item" href="#" onClick={()=>this.props.filterInverntory(item.InventoryName)}>{item.InventoryName}</a>
-                       </Fragment>
-                  );                     
-              });
-      }
+   
     loadInvenstoryDetails=()=>{
        this.props.viewInventory();
     }
@@ -49,14 +45,14 @@ class Header extends React.Component{
                     <li className="nav-item active">
                       <a className="nav-link" href="#" onClick={()=>this.props.filterInverntory("All")} >View All <span className="sr-only">(current)</span></a>
                     </li>
-                    {this.props.inventoryDetails&&this.renderInventoryName(this.props.inventoryDetails)}                   
+                    {this.props.inventoryDetails&&this.renderInventoryName(this.props.inventoryDetails, "main")}                   
                     
                     {this.props.inventoryDetails.length>0&&<li className="nav-item dropdown show">
                     <a className="nav-link dropdown-toggle" onClick={handleCollaspe} href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Manage Type
                       </a>
                       <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                      {this.renderManageType(this.props.inventoryDetails)}
+                      {this.renderInventoryName(this.props.inventoryDetails, "sub")}
                       </div>
                     </li>}
                   </ul>
