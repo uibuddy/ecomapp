@@ -1,0 +1,65 @@
+
+.type-heading-mobile{
+   display:none; 
+}
+.type-heading-desktop{
+    background: #eeeeee;
+    padding:20px;
+    padding-left:10px;
+    margin-left:0px !important;
+    margin-bottom: 20px;
+}
+
+.header-item{
+    padding:0 5px;
+    cursor: pointer;
+}
+.col-header-block{
+    background: #eeeeee;
+    margin:-17px;
+    padding:20px 10px;
+    margin-bottom: 10px;
+    position: relative;
+}
+.react-datepicker-wrapper{
+    display: block;
+}
+.close.a-link{
+    position: absolute;
+    right: 10px;
+    top:2px;
+    font-weight: normal;
+    cursor: pointer;
+}
+@media (max-width:991px){
+    .type-heading-desktop{
+        display: none !important;
+    }
+    .content-block{
+      display: none;  
+    }
+    .content-block.show{
+        display: block;       
+    }
+    .type-heading-mobile{
+        display:block;
+        background: #646464;
+        color: #ffffff;
+        padding: 20px 10px;
+    }
+    .type-heading-mobile:before{
+        content: "+";
+        font-size: 30px;
+        color: #ffffff;
+        position: absolute;
+        right:50px;
+    }
+    .type-heading-mobile.show:before{
+        content: "-";
+        font-size: 20px;
+        color: #ffffff;
+        padding: 10px;
+        margin-top:-5px;
+    }
+}
+
